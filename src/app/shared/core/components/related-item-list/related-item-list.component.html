@@ -1,0 +1,10 @@
+<div class="item-title">
+  <ng-content></ng-content>
+</div>
+<div class="item-list">
+  <div *ngFor="let item of items"
+       [ngClass]="{ 'item-active': !!item.route }"
+       [routerLink]="item.route" class="item">{{ item.name }}</div>
+  <div class="item add" (click)="add.emit()">...</div>
+  <mat-spinner *ngIf="loading" diameter="50" mode="indeterminate"></mat-spinner>
+</div>

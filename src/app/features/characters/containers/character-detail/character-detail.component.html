@@ -1,0 +1,38 @@
+<ng-container *ngIf="(viewModel$ | async) as vm">
+  <div *ngIf="vm.loading" class="loading-indicator">
+    <mat-spinner data-test-id="loading-indicator" mode="indeterminate"></mat-spinner>
+  </div>
+  <ng-container *ngIf="vm.loaded && vm.character">
+  <div class="info">
+    <div class="headline">Characterdetails</div>
+    <div class="underline"></div>
+      <div class="title">{{vm.character.name}}</div>
+  </div>
+
+  <div class="detail">
+    <div class="character-detail">
+      <div class="details">Details</div>
+      <div><span>Grösse:</span> {{vm.character.height}}m</div>
+      <div><span>Gewicht:</span> {{vm.character.mass}}kg</div>
+      <div><span>Haarfarbe:</span> {{vm.character.hair_color}}</div>
+      <div><span>eye_color:</span> {{vm.character.eye_color}}</div>
+      <div><span>Geburtsjahr:</span> {{vm.character.birth_year}}</div>
+      <div><span>Geschlecht:</span> {{vm.character.gender}}</div>
+
+      <div class="homeWorld">
+        <div class="planet-label">Heimatplanet:</div>
+        <div *ngIf="vm.planets.loaded" [routerLink]="vm.planets.data[0].route" class="planet-name">{{vm.planets.data[0].name}}</div>
+        <mat-spinner *ngIf="vm.planets.loading" diameter="50" mode="indeterminate"></mat-spinner>
+      </div>
+    </div>
+    <div class="picture">Picture</div>
+  </div>
+
+ <app-related-item-list [items]="vm.films.data" [loading]="vm.films.loading">Films:</app-related-item-list>
+ <app-related-item-list [items]="vm.species.data" [loading]="vm.species.loading">Species:</app-related-item-list>
+ <app-related-item-list [items]="vm.starships.data" [loading]="vm.starships.loading">Raumschiffe:</app-related-item-list>
+ <app-related-item-list [items]="vm.vehicles.data" [loading]="vm.vehicles.loading">Fahrzeuge:</app-related-item-list>
+
+  </ng-container>
+</ng-container>
+

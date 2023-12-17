@@ -1,0 +1,10 @@
+<nav class="navigation">
+  <ul>
+    <li *ngFor="let nav of navList">
+      <a
+      [routerLink]="[nav.route]"
+      [routerLinkActive]="'active'"
+      [routerLinkActiveOptions]="{ exact: nav.exact }">{{nav.name}}</a>
+    </li>
+  </ul>
+</nav>

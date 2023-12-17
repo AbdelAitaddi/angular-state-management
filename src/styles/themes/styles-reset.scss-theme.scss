@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin styles-reset-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+
+  * {
+    color: mat.get-color-from-palette($primary, text);;
+  }
+
+  a {
+    color: mat.get-color-from-palette($primary, text);
+
+    &:hover {
+      cursor: pointer;
+      color: rgba(mat.get-color-from-palette($primary), 0.5);
+    }
+  }
+
+}

@@ -1,0 +1,19 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  word-wrap: break-word;
+}
+
+* {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}

@@ -1,0 +1,26 @@
+<ng-container *ngIf="(viewModel$ | async) as vm">
+<div class="info">
+  <div class="headline">Planetdetails</div>
+  <div class="underline"></div>
+  <div class="title">{{vm.selectedPlanet.name}}</div>
+</div>
+
+  <div class="detail">
+    <div class="film-detail">
+      <div class="details">Details</div>
+      <div><span>terrain:</span> {{vm.selectedPlanet.terrain}}</div>
+      <div><span>climate:</span> {{vm.selectedPlanet.climate}}</div>
+      <div><span>gravity:</span> {{vm.selectedPlanet.gravity}}</div>
+      <div><span>population:</span> {{vm.selectedPlanet.population}}</div>
+      <div><span>orbital period:</span> {{vm.selectedPlanet.orbital_period}}</div>
+      <div><span>rotation period:</span> {{vm.selectedPlanet.rotation_period}}</div>
+      <div><span>surface water:</span> {{vm.selectedPlanet.surface_water}}</div>
+      <div><span>created:</span> {{vm.selectedPlanet.created}}</div>
+    </div>
+    <div class="picture">Picture</div>
+  </div>
+
+  <app-related-item-list [items]="vm.filmsResource.data" [loading]="vm.filmsResource.loading">Films:</app-related-item-list>
+  <app-related-item-list [items]="vm.residentsResource.data" [loading]="vm.residentsResource.loading">Charaktere:</app-related-item-list>
+
+</ng-container>

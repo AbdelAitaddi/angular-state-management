@@ -1,0 +1,136 @@
+<div class="openClose" #content [@.disabled]="animationsDisabled">
+  <nav>
+    <button type="button" (click)="toggle()">Toggle Open/Close</button>
+  </nav>
+
+  <div [@openClose]="isOpen ? 'open' : 'closed'"
+       (@openClose.start)="onAnimationEvent($event)"
+       (@openClose.done)="onAnimationEvent($event)"
+       class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+  </div>
+</div>
+
+
+
+<div @myInsertRemoveTrigger class="insert-remove-container">
+  <p>The box is inserted</p>
+</div>
+
+
+
+<div>
+  <input #checkboxDefer type="checkbox" [checked]="isCheckedDefer()" (change)="isCheckedDefer.set(checkboxDefer.checked)" id="checkboxDefer"/>
+  <label for="checkboxDefer">Open the network tab of the browser's developer tools, then check this checkbox to load the <strong>app</strong> component</label>
+</div>
+<br>
+
+<h3>Using defer with a logical expression</h3>
+@defer (when isCheckedDefer()) {
+<b>test data</b>
+}
+@placeholder {
+<span>this is Placeholder</span>
+}
+@error {
+<span>Error</span>
+}
+@loading(minimum 1s) {
+<span>Loading...</span>
+}
+
+<h3>defer on interaction</h3>
+<button #trigger>trigger</button>
+@defer (on interaction(trigger); prefetch on idle) {
+<span>Clicked</span>
+}
+@placeholder {
+<span>Placeholder (click on it!)</span>
+}
+
+<h3>defer on hover</h3>
+
+@defer (on hover) {
+<span>Hovered</span>
+}
+@placeholder {
+<span>Placeholder (hover it!)</span>
+}
+
+<h3>defer on idle</h3>
+<!--  @defer  === @defer (on idle; prefetch on idle)  -->
+@defer (on idle) {
+<span>Browser has reached an idle state</span>
+}
+@placeholder {
+<span>Placeholder</span>
+}
+
+<h3>defer on timer</h3>
+@defer (on timer(5s)) {
+<span>Visible after 5s</span>
+}
+@placeholder {
+<span>Placeholder</span>
+}
+
+<h3 #title>defer on viewport</h3>
+@defer (on viewport(title)) {
+<p>viewport </p>
+}
+@placeholder {
+<span>Placeholder</span>
+}
+
+<h3>prefetching</h3>
+
+@defer (on interaction; prefetch on hover) {
+<p>prefetching on interaction or prefetch on hover</p>
+}
+@placeholder {
+<span>Placeholder (hover it, then click on it!)</span>
+}
+
+<h3>condition</h3>
+<button #trigger2 (click)="load=true">load component</button>
+
+@defer (when load == true) {
+<p>load on condition finish</p>
+}
+@loading(after 1s; minimum 10s) {
+<p>loading...</p>
+}
+@placeholder(minimum 2s) {
+<p>click on load component</p>
+}
+
+<h3>prefetch condition</h3>
+<button (click)="load=!load">load component</button>
+
+@defer (prefetch on immediate; prefetch when load == true) {
+<p>prefetching on condition</p>
+}
+@placeholder {
+<p>click to prefetch component</p>
+}
+
+<h3>Custom defer triggers with the when keyword</h3>
+
+<button (click)="showComponent= true">Trigger Prefetch</button>
+
+<button (click)="loadComponent= true">Trigger Display</button>
+
+@defer(when loadComponent; prefetch when showComponent) {
+<p>here Custom defer triggers with the when keyword {{showComponent}}</p>
+}
+
+
+<h2>Signals</h2>
+
+@if (show) {
+  <app-foo></app-foo>
+} @else {
+  <span>Not checked</span>
+}
+
+<button (click)="show = !show">Toggle</button>

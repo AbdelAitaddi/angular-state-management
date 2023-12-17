@@ -1,0 +1,28 @@
+<ng-container *ngIf="vm().filmDetail as film">
+  <div class="info">
+    <div class="headline">Filmdetails</div>
+    <div class="underline"></div>
+    <ng-container>
+      <div class="title">{{film.title}}</div>
+      <div class="episode">Episode {{film.episode_id}}</div>
+    </ng-container>
+  </div>
+
+  <div class="detail">
+    <div class="film-detail">
+      <div class="details">Details</div>
+      <div><b>Director:</b> {{film.director}}</div>
+      <div><b>Produzenten:</b> {{film.producer}}</div>
+      <div><b>Erscheinungsdatum:</b> {{film.release_date}}</div>
+      <div class="margin-top">{{film.opening_crawl}}</div>
+    </div>
+    <div class="picture">Picture Placeholder</div>
+  </div>
+
+  <app-related-item-list [items]="vm().characters.data" [loading]="vm().characters.loading">Charaktere:</app-related-item-list>
+  <app-related-item-list [items]="vm().planets.data" [loading]="vm().planets.loading">Planeten:</app-related-item-list>
+  <app-related-item-list [items]="vm().starships.data" [loading]="vm().starships.loading">Raumschiffe:</app-related-item-list>
+  <app-related-item-list [items]="vm().vehicles.data" [loading]="vm().vehicles.loading">Fahrzeuge:</app-related-item-list>
+  <app-related-item-list [items]="vm().species.data" [loading]="vm().species.loading">Species:</app-related-item-list>
+
+</ng-container>

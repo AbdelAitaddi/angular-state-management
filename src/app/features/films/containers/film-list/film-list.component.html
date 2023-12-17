@@ -1,0 +1,9 @@
+<div class="title">Filme</div>
+
+<div class="container">
+  @for (film of vm().films; track film.id) {
+    <app-film-preview [film]="film"></app-film-preview>
+  } @empty {
+    <p>No films added yet!</p>
+  }
+</div>

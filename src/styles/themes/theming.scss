@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+@use './default-theme' as themes;
+
+@import './styles-reset.scss-theme';
+@import './../../app/core/containers/app/app.component.scss-theme';
+@import './../../app/core/components/sidenav-item/sidenav.component.scss-theme';
+
+@include mat.core();
+
+@mixin components-theme($theme) {
+  @include app-component-theme($theme);
+  @include styles-reset-theme($theme);
+  @include sidenav-component-theme($theme);
+}
+
+.light-theme {
+  @include mat.all-component-themes(themes.$default-theme);
+  @include components-theme(themes.$default-theme);
+}

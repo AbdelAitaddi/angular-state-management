@@ -1,0 +1,39 @@
+@use "../../../../../styles/mixins/layout";
+@use "../../../../../styles/base/sizes";
+@use "../../../../../styles/base/breakpoints";
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #10172C;
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  height: 90px;
+  margin: 80px 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: sizes.$medium;
+}
+
+@media (max-width: map-get(breakpoints.$grid-breakpoints, "xl")) {
+  .title {
+    margin: 60px 0;
+  }
+}
+
+@media (max-width: map-get(breakpoints.$grid-breakpoints, "md")) {
+
+  .title {
+    margin: 40px;
+  }
+}
+
+@media (max-width: map-get(breakpoints.$grid-breakpoints, "sm")) {
+  .title {
+    margin: 20px;
+  }
+}

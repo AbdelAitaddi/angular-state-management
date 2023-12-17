@@ -1,0 +1,12 @@
+<mat-card class="card">
+  <div class="picture">Picture</div>
+  <mat-card-content>
+    <div class="card-title"> {{film.title }}</div>
+    <div class="director">Director: {{film.producer }}</div>
+    <div class="producers">Produzenten: {{film.director }}</div>
+    <div class="date">Erscheinungsdatum: {{film.created }}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <a class="more" [routerLink]="['/films', film.id]">Mehr informationen...</a>
+  </mat-card-actions>
+</mat-card>

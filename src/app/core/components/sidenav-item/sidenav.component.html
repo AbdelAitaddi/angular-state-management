@@ -1,0 +1,8 @@
+<a
+  mat-list-item
+  (click)="$event.stopPropagation(); toggle.emit()"
+  [routerLink]="routerLink"
+  [routerLinkActive]="'active'"
+  [routerLinkActiveOptions]="{ exact }">
+  <span mat-line matListItemTitle data-test-id="nav-item-name">{{ name }}</span>
+</a>

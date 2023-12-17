@@ -1,0 +1,48 @@
+<mat-toolbar>
+  <button
+    *ngIf="(isSmallScreen$ | async)"
+    (click)="sidenav.toggle()"
+    mat-icon-button><mat-icon>menu</mat-icon>
+  </button>
+  <img [src]="logo"/>
+  <ng-container  *ngIf="(isSmallScreen$ | async) === false">
+    <app-menu-nav-list [navList]="navList"></app-menu-nav-list>
+    <div class="spacer"></div>
+    <app-search></app-search>
+
+  </ng-container>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    [mode]="(sidenavMode$ | async)!"
+    [opened]="(isSmallScreen$ | async)!"
+    [fixedInViewport]="false"
+    [autoFocus]="false"
+  >
+    <mat-nav-list>
+      <app-sidenav-item
+        *ngFor="let nav of navList"
+        [routerLink]="nav.route"
+        [name]="nav.name"
+        [exact]="nav.exact"
+        (toggle)="sidenav.toggle()"
+      ></app-sidenav-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div *ngIf="loading()" class="loading-indicator">
+      <mat-spinner data-test-id="loading-indicator" mode="indeterminate"></mat-spinner>
+    </div>
+    <div style="padding: 20px 10%;">
+    <div [@routeAnimations]="getRouteAnimationData()">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

@@ -1,0 +1,8 @@
+<div class="title">Planets</div>
+
+<div class="container">
+  <app-planet-preview
+    *ngFor="let planet of (planets$ | async)"
+    [planet]="planet"
+  ></app-planet-preview>
+</div>

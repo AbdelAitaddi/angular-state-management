@@ -1,0 +1,12 @@
+<mat-card class="card">
+  <div class="picture">Picture</div>
+  <mat-card-content>
+    <div class="card-title"> {{planet.name }}</div>
+    <div class="producers">Population: {{planet.population }}</div>
+    <div class="date">Climate: {{planet.climate }}</div>
+    <div class="director">Gravity: {{planet.gravity }}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <a class="more" [routerLink]="route">Mehr informationen...</a>
+  </mat-card-actions>
+</mat-card>

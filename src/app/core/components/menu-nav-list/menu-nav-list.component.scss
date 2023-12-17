@@ -1,0 +1,39 @@
+@use "../../../../styles/base/variables" as theme;
+@use "../../../../styles/base/breakpoints";
+@use "../../../../styles/base/sizes";
+
+.navigation {
+  width: 100%;
+}
+
+.navigation ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0 25px;
+}
+
+a {
+  font-size: 14px;
+  letter-spacing: 0;
+  text-decoration: none;
+  width: 100%;
+}
+
+
+a:hover, .active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+@media (max-width: map-get(breakpoints.$grid-breakpoints, "lg")) {
+  li {
+    margin: 0 12px;
+  }
+}

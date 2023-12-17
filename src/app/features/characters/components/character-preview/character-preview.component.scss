@@ -1,0 +1,46 @@
+.card {
+  background-color: rgb(187, 187, 187, 0.24);
+}
+
+.card-title {
+  margin: 16px 0;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.card-action {
+  padding: 0 16px;
+  font-size: 12px;
+}
+
+.director, .producers, .date {
+  font-size: 14px;
+  margin: 4px 0;
+  letter-spacing: 0;
+}
+
+.more {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 8px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.picture {
+  width: 100%;
+  min-width: 300px;
+  min-height: 300px;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #10172C;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}

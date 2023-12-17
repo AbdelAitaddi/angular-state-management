@@ -1,0 +1,26 @@
+<ng-container *ngIf="viewModel() as vm">
+  <div class="title">Characters</div>
+
+  <div class="container">
+    <!--    <app-character-preview-->
+    <!--      *ngFor="let character of vm.characters"-->
+    <!--      [character]="character"-->
+    <!--    ></app-character-preview>-->
+    @if (vm.loaded) {
+      @for (character of vm.characters; track character.id) {
+      @defer (on viewport) {
+        <app-character-preview [character]="character"></app-character-preview>
+      } @placeholder {
+      <span>Placeholder</span>
+      }
+      } @empty {
+      <p>No character added yet!</p>
+      }
+    } @else {
+      <div class="loading-indicator">
+       <mat-spinner data-test-id="loading-indicator" mode="indeterminate"></mat-spinner>
+      </div>
+    }
+  </div>
+
+</ng-container>
